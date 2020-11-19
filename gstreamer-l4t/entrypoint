@@ -1,0 +1,13 @@
+#!/bin/sh
+set -eu
+
+rm -rf /etc/service
+mkdir -p /etc/service
+echo "${SERVICES:-}" | tr ',' '\n' | while IFS=@ read svc ins
+do
+    printf >&2 'Enabling service=%s instance=%s\n' "$svc" "$ins"
+    mkdir -p "/etc/service/${svc}@${ins}"
+    ln -sf "/etc/sv/run_${svc}" "/etc/service/${svc}@${ins}/run"
+done
+echo >&2 'Command:' "$@"
+exec "$@"
