@@ -7,6 +7,7 @@ RUN set -eux; \
   apt-get install -qy --no-install-recommends \
   curl ca-certificates \
   gir1.2-gstreamer-1.0 \
+  gir1.2-gst-rtsp-server-1.0 \
   gstreamer1.0-alsa \
   gstreamer1.0-gl \
   gstreamer1.0-libav \
@@ -16,6 +17,7 @@ RUN set -eux; \
   gstreamer1.0-plugins-good \
   gstreamer1.0-plugins-ugly \
   gstreamer1.0-pulseaudio \
+  gstreamer1.0-rtsp \
   gstreamer1.0-tools \
   gstreamer1.0-x \
   libgstreamer-plugins-base1.0-dev \

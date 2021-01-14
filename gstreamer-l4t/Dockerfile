@@ -49,6 +49,7 @@ RUN apt-get update -q \
         mg vim-tiny net-tools procps \
         runit \
         gir1.2-gstreamer-1.0 \
+        gir1.2-gst-rtsp-server-1.0 \
         gstreamer1.0-alsa \
         gstreamer1.0-gl \
         gstreamer1.0-libav \
@@ -58,6 +59,7 @@ RUN apt-get update -q \
         gstreamer1.0-plugins-good \
         gstreamer1.0-plugins-ugly \
         gstreamer1.0-pulseaudio \
+        gstreamer1.0-rtsp \
         gstreamer1.0-tools \
         gstreamer1.0-x \
         libgstreamer-plugins-base1.0-dev \
