@@ -1,4 +1,4 @@
-FROM intio/l4t:r32.4.4
+FROM intio/l4t:r32.5
 
 # Install some common tools, runit, GStreamer, l4t.
 RUN apt-get update -q \

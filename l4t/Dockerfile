@@ -12,6 +12,12 @@ RUN  apt-get update -q \
 ADD ./jetson-ota-public.asc /etc/apt/trusted.gpg.d/jetson-ota-public.asc
 ADD ./nvidia-l4t-apt-source.list /etc/apt/sources.list.d/nvidia-l4t-apt-source.list
 
+# Upgrade to r32.5 (base image not ready as of 2021-01-26)
+RUN  apt-get update -q \
+        && DEBIAN_FRONTEND=noninteractive \
+        apt-get dist-upgrade -qy \
+    && rm -rf /var/lib/apt/lists/*
+
 # NVidia's packages verify that the required hardware is present
 # during the installation. Docker does not currently allow mapping a
 # host filesystem into the build container; we also may want to build

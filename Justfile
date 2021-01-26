@@ -1,11 +1,15 @@
-build-all: intio_docker-build intio_gstreamer intio_nginx-rtmp
+build-all: intio_docker-build intio_l4t intio_gstreamer intio_nginx-rtmp
+
+
+intio_l4t:
+        docker build -t intio/l4t:r32.5 l4t
 
 intio_gstreamer: intio_gstreamer_l4t intio_gstreamer_vanilla
 
 intio_gstreamer_vanilla:
         docker build -t intio/gstreamer gstreamer
 
-intio_gstreamer_l4t:
+intio_gstreamer_l4t: intio_l4t
         docker build -t intio/gstreamer:l4t gstreamer-l4t
 
 intio_docker-build:
@@ -16,5 +20,7 @@ intio_nginx-rtmp:
 
 push-all:
         docker push intio/docker-build
+        docker push intio/gstreamer
         docker push intio/gstreamer:l4t
         docker push intio/nginx-rtmp
+        docker push intio/l4t:r32.5
