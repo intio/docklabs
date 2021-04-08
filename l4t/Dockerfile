@@ -1,20 +1,20 @@
-FROM nvcr.io/nvidia/l4t-base:r32.4.4
+FROM nvcr.io/nvidia/l4t-base:r32.5.0
+# one of: t194 t210
+ARG BOARD
 
-# Upgrade the base image; install ca-certificates for HTTPS repos.
+# Install ca-certificates for HTTPS repos.
 RUN  apt-get update -q \
-        && DEBIAN_FRONTEND=noninteractive \
-        apt-get dist-upgrade -qy \
     && DEBIAN_FRONTEND=noninteractive \
         apt-get install -qy --no-install-recommends ca-certificates \
     && rm -rf /var/lib/apt/lists/*
 
 # NVidia's proprietary l4t packages
 ADD ./jetson-ota-public.asc /etc/apt/trusted.gpg.d/jetson-ota-public.asc
-ADD ./nvidia-l4t-apt-source.list /etc/apt/sources.list.d/nvidia-l4t-apt-source.list
+ADD ./nvidia-l4t-apt-source-${BOARD}.list /etc/apt/sources.list.d/nvidia-l4t-apt-source.list
 
-# Upgrade to r32.5 (base image not ready as of 2021-01-26)
+# Upgrade everything
 RUN  apt-get update -q \
-        && DEBIAN_FRONTEND=noninteractive \
+    && DEBIAN_FRONTEND=noninteractive \
         apt-get dist-upgrade -qy \
     && rm -rf /var/lib/apt/lists/*
 

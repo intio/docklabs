@@ -1,4 +1,6 @@
-FROM intio/l4t:r32.5
+# one of: t194 t210
+ARG BOARD
+FROM intio/l4t:r32.5-${BOARD}
 
 # Install some common tools, runit, GStreamer, l4t.
 RUN apt-get update -q \
