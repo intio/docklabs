@@ -11,6 +11,8 @@ RUN set -eux; \
   gstreamer1.0-alsa \
   gstreamer1.0-gl \
   gstreamer1.0-libav \
+  gstreamer1.0-nice \
+  gstreamer1.0-omx-generic \
   gstreamer1.0-plugins-bad \
   gstreamer1.0-plugins-base \
   gstreamer1.0-plugins-base-apps \
@@ -19,8 +21,11 @@ RUN set -eux; \
   gstreamer1.0-pulseaudio \
   gstreamer1.0-rtsp \
   gstreamer1.0-tools \
+  gstreamer1.0-vaapi \
   gstreamer1.0-x \
   libgstreamer-plugins-base1.0-dev \
+  libgstreamer-plugins-bad1.0-dev \
+  libgstreamer-plugins-good1.0-dev \
   libgstreamer1.0-dev \
   mesa-va-drivers \
   mesa-vdpau-drivers \
